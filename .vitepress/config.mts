@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: 'Sub-Store',
+  title: 'Sub-Store 文档',
   description: 'Sub-Store 文档',
   lang: 'zh-CN',
   base: '/doc/',
