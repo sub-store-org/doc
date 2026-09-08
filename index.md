@@ -16,6 +16,12 @@ hero:
     - theme: alt
       text: 安装指南
       link: /guide/installation
+    - theme: alt
+      text: 前端源码地址
+      link: https://github.com/sub-store-org/Sub-Store-Front-End
+    - theme: alt
+      text: 后端源码地址
+      link: https://github.com/sub-store-org/Sub-Store/releases
 
 features:
   - title: 节点订阅转换
