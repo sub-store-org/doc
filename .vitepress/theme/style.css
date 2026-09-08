@@ -1,46 +1,20 @@
 /**
- * Customize default theme styling by overriding CSS variables:
- * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
- */
-
-/**
- * Colors
+ * Sub-Store 品牌主题
  *
- * Each colors have exact same color scale system with 3 levels of solid
- * colors with different brightness, and 1 soft color.
+ * 深青色系,源自 favicon 的 #93EEFE (青) → #A1FCC6 (绿) 渐变。
+ * 主题跟随系统,浅色/深色各有一套品牌色。
  *
- * - `XXX-1`: The most solid color used mainly for colored text. It must
- *   satisfy the contrast ratio against when used on top of `XXX-soft`.
+ * - `XXX-1`: 最"沉"的颜色,用于彩色文字 (浅色=最深色, 深色=最亮色)
  *
- * - `XXX-2`: The color used mainly for hover state of the button.
+ * - `XXX-2`: 按钮 hover 色
  *
- * - `XXX-3`: The color for solid background, such as bg color of the button.
- *   It must satisfy the contrast ratio with pure white (#ffffff) text on
- *   top of it.
+ * - `XXX-3`: 固体背景色,如按钮背景,需与白色文字有足够对比度
  *
- * - `XXX-soft`: The color used for subtle background such as custom container
- *   or badges. It must satisfy the contrast ratio when putting `XXX-1` colors
- *   on top of it.
+ * - `XXX-soft`: 半透明背景,用于 custom container / badge
  *
- *   The soft color must be semi transparent alpha channel. This is crucial
- *   because it allows adding multiple "soft" colors on top of each other
- *   to create an accent, such as when having inline code block inside
- *   custom containers.
+ * - `brand`: 品牌主色 (链接、品牌按钮)
  *
- * - `default`: The color used purely for subtle indication without any
- *   special meanings attached to it such as bg color for menu hover state.
- *
- * - `brand`: Used for primary brand colors, such as link text, button with
- *   brand theme, etc.
- *
- * - `tip`: Used to indicate useful information. The default theme uses the
- *   brand color for this by default.
- *
- * - `warning`: Used to indicate warning to the users. Used in custom
- *   container, badges, etc.
- *
- * - `danger`: Used to show error, or dangerous message to the users. Used
- *   in custom container, badges, etc.
+ * - `tip`: 提示信息,默认跟随品牌色
  * -------------------------------------------------------------------------- */
 
 :root {
@@ -49,10 +23,11 @@
   --vp-c-default-3: var(--vp-c-gray-3);
   --vp-c-default-soft: var(--vp-c-gray-soft);
 
-  --vp-c-brand-1: var(--vp-c-indigo-1);
-  --vp-c-brand-2: var(--vp-c-indigo-2);
-  --vp-c-brand-3: var(--vp-c-indigo-3);
-  --vp-c-brand-soft: var(--vp-c-indigo-soft);
+  /* brand: 浅色主题用较深的青绿,保证在白色背景上的对比度 */
+  --vp-c-brand-1: #0e7490;
+  --vp-c-brand-2: #0891b2;
+  --vp-c-brand-3: #0891b2;
+  --vp-c-brand-soft: rgba(8, 145, 178, 0.14);
 
   --vp-c-tip-1: var(--vp-c-brand-1);
   --vp-c-tip-2: var(--vp-c-brand-2);
@@ -68,6 +43,19 @@
   --vp-c-danger-2: var(--vp-c-red-2);
   --vp-c-danger-3: var(--vp-c-red-3);
   --vp-c-danger-soft: var(--vp-c-red-soft);
+}
+
+.dark {
+  /* brand: 深色主题用 favicon 同款亮青,科技感 */
+  --vp-c-brand-1: #93eeff;
+  --vp-c-brand-2: #67e8f9;
+  --vp-c-brand-3: #0891b2;
+  --vp-c-brand-soft: rgba(8, 145, 178, 0.16);
+
+  --vp-c-tip-1: var(--vp-c-brand-1);
+  --vp-c-tip-2: var(--vp-c-brand-2);
+  --vp-c-tip-3: var(--vp-c-brand-3);
+  --vp-c-tip-soft: var(--vp-c-brand-soft);
 }
 
 /**
@@ -94,16 +82,30 @@
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: -webkit-linear-gradient(
     120deg,
-    #bd34fe 30%,
-    #41d1ff
+    #0e7490 30%,
+    #0f766e
   );
 
   --vp-home-hero-image-background-image: linear-gradient(
     -45deg,
-    #bd34fe 50%,
-    #47caff 50%
+    #0e7490 50%,
+    #0f766e 50%
   );
   --vp-home-hero-image-filter: blur(44px);
+}
+
+.dark {
+  /* 深色下用 favicon 同款青→绿渐变 */
+  --vp-home-hero-name-background: -webkit-linear-gradient(
+    120deg,
+    #93eeff 30%,
+    #a1fcc6
+  );
+  --vp-home-hero-image-background-image: linear-gradient(
+    -45deg,
+    #93eeff 50%,
+    #a1fcc6 50%
+  );
 }
 
 @media (min-width: 40rem) {
@@ -129,3 +131,11 @@
   --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
 }
 
+/**
+ * 细节: 选中文字 / 行内代码 跟随品牌青
+ * -------------------------------------------------------------------------- */
+
+::selection {
+  background-color: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+}
