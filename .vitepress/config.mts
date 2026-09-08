@@ -50,24 +50,18 @@ export default defineConfig({
         items: [
           { text: '快速开始', link: '/guide/getting-started' },
           { text: '安装', link: '/guide/installation' },
+          { text: '更新与维护', link: '/guide/update' },
           { text: '故障排查', link: '/guide/troubleshooting' }
         ]
       },
       {
-        text: '参考',
-        collapsed: false,
-        items: [
-          { text: '环境变量', link: '/reference/environment-variables' },
-          { text: 'sub.store 域名说明', link: '/reference/sub-store-domain' }
-        ]
-      },
-      {
         text: '脚本',
-        collapsed: true,
+        collapsed: false,
         items: [
           { text: '脚本概览', link: '/script/overview' },
           { text: '脚本使用', link: '/script/usage' },
-          { text: '脚本 API', link: '/script/api' }
+          { text: '脚本 API', link: '/script/api' },
+          { text: '脚本示例', link: '/script/examples' }
         ]
       },
       {
@@ -90,24 +84,11 @@ export default defineConfig({
         ]
       },
       {
-        text: '同步',
+        text: '同步与分享',
         collapsed: true,
         items: [
-          { text: '同步概览', link: '/sync/overview' }
-        ]
-      },
-      {
-        text: '分享',
-        collapsed: true,
-        items: [
+          { text: '同步概览', link: '/sync/overview' },
           { text: '分享概览', link: '/shares/overview' }
-        ]
-      },
-      {
-        text: '归档',
-        collapsed: true,
-        items: [
-          { text: '归档概览', link: '/archives/overview' }
         ]
       },
       {
@@ -120,10 +101,29 @@ export default defineConfig({
         ]
       },
       {
+        text: '归档',
+        collapsed: true,
+        items: [
+          { text: '归档概览', link: '/archives/overview' }
+        ]
+      },
+      {
         text: '高级功能',
         collapsed: true,
         items: [
-          { text: 'HTTP-META', link: '/advanced/http-meta' }
+          { text: 'HTTP-META', link: '/advanced/http-meta' },
+          { text: '推送通知', link: '/advanced/push' },
+          { text: 'MMDB 本地数据库', link: '/advanced/mmdb' }
+        ]
+      },
+      {
+        text: '参考',
+        collapsed: false,
+        items: [
+          { text: '环境变量', link: '/reference/environment-variables' },
+          { text: '链接参数', link: '/reference/link-params' },
+          { text: '支持的格式', link: '/reference/formats' },
+          { text: 'sub.store 域名说明', link: '/reference/sub-store-domain' }
         ]
       }
     ]
