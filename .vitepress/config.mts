@@ -38,7 +38,7 @@ export default defineConfig({
     },
 
     nav: [
-      { text: '指南', link: '/guide/' },
+      { text: '指南', link: '/guide/getting-started' },
       { text: '参考', link: '/reference/environment-variables' },
       { text: '成员', link: '/members' }
     ],
