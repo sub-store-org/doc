@@ -18,12 +18,12 @@ hero:
       link: /guide/installation
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: 节点订阅转换
+    details: 支持多种订阅格式之间的转换，并可对节点进行过滤、排序、重命名等处理
+  - title: 配置文件生成
+    details: 基于订阅与模板生成所需配置文件，满足不同客户端和使用场景
+  - title: 同步分享使用
+    details: 支持同步订阅/文件数据，并通过分享功能快速共享
 ---
 
 ::: danger 注意
