@@ -1,46 +1,58 @@
 ---
 title: 安装
-description: Sub-Store 的多种安装方式：代理 App 内使用、Android 版、Docker 自建等
+description: Sub-Store 的多种安装方式对比
 ---
 
 # 安装
 
-Sub-Store 有多种部署方式，按使用场景选择：
+Sub-Store 有多种部署方式，大部分由社区维护：
 
-| 方式 | 适合场景 | 说明 |
+::: info
+高级功能 请参考文档 高级功能 章节
+
+如果你不知道什么是高级功能，那么建议你忽略，~~因为你用不上~~
+:::
+
+| 方式 | 说明 | 注意 |
 | --- | --- | --- |
-| 代理 App 内置/模块 | 日常使用，最方便 | Surge / Shadowrocket / Loon / QX 等，见下文 |
-| Android 模块 / App | 在手机上长期运行 | Magisk / KernelSU / APatch 模块、SubCase、Termux |
-| Docker 自建 | 服务器 / NAS / 长期稳定运行 | 官方镜像 `xream/sub-store` |
-| 官方前端直连 | 临时使用 / 配合自建后端 | <https://sub-store.vercel.app> |
+| 软件内置 | Clash Party / Sparkle 等客户端内置了 Sub-Store | 大多无法直接使用高级功能 |
+| 代理 App 模块 | Surge / Shadowrocket / Loon / QX 等 | 可以变通使用部分高级功能 |
+| Android 模块 | [Delusions6515/Sub-Store-Module](https://github.com/Delusions6515/Sub-Store-Module) | **需要 root** <br> 可以直接使用高级功能 |
+| Android APP | [sionnx/SubCase](https://github.com/sionnx/SubCase) | 无法直接使用高级功能 |
+| Android Termux | https://t.me/e58695/205 | |
+| Docker 自建 | 官方镜像 [`xream/sub-store`](https://hub.docker.com/r/xream/sub-store) | 若要使用高级功能，请参考 Docker Hub 页面说明 |
+| 官方前端 | <https://sub-store.vercel.app> | 仅前端，需搭配自定义后端使用 |
+<!-- | SubDock | [sub-store-org/SubDock](https://github.com/sub-store-org/SubDock) <br> 全平台 Sub-Store 管理器 | 仍在开发中... | -->
+
+## 软件内置
+
+Clash Party / [xishang0128/Sparkle](https://github.com/xishang0128/sparkle) 等客户端内置了 Sub-Store 支持
+
+在客户端内点击右上角下载按钮即可更新内置的 Sub-Store。
 
 ## 代理 App 版
 
 Sub-Store 提供各代理 App 的模块/插件/重写配置，位于后端仓库的 [`config` 目录](https://github.com/sub-store-org/Sub-Store/tree/master/config)：
 
 - **Surge / Shadowrocket**：安装 Sub-Store 模块
-- **Loon**：安装插件；Loon 3.5.0(969) 及以上推荐使用新版[资源解析器插件](https://raw.githubusercontent.com/sub-store-org/Sub-Store/master/config/Loon-parser.plugin)，旧版在 `[General]` 中配置 `resource-parser`，详见官方 Wiki 的 [Loon 资源解析器说明](https://github.com/sub-store-org/Sub-Store/wiki/Loon-%E8%B5%84%E6%BA%90%E8%A7%A3%E6%9E%90%E5%99%A8%E8%AF%B4%E6%98%8E)
+- **Loon**：
+  - 安装插件
+  - Loon 3.5.0(969) 及以上推荐使用新版[资源解析器插件](https://raw.githubusercontent.com/sub-store-org/Sub-Store/master/config/Loon-parser.plugin)
+    - 旧版在 `[General]` 中配置 `resource-parser`，详见官方 Wiki 的 [Loon 资源解析器说明](https://github.com/sub-store-org/Sub-Store/wiki/Loon-%E8%B5%84%E6%BA%90%E8%A7%A3%E6%9E%90%E5%99%A8%E8%AF%B4%E6%98%8E)
 - **QX**：添加重写引用
 - **Stash / Egern** 等：使用对应配置
 
 安装后务必确认：**模块/插件已下载成功、开关已开启**，并信任 MitM 证书。若刷新不出新版前端，见 [清除前端 PWA 缓存](./troubleshooting)。
 
-> Clash Party / Sparkle 等客户端内置了 Sub-Store 支持：在客户端内点击右上角下载按钮即可更新内置的 Sub-Store。
-
 ## Android 版
 
-- **模块版**（推荐）：[Delusions6515/Sub-Store-Module](https://github.com/Delusions6515/Sub-Store-Module)，支持 Magisk、KernelSU 与 APatch，刷入后访问 `http://127.0.0.1:3001?api=http://127.0.0.1:3000` 即同时打开前端+后端
-  - 配置文件：`/data/adb/sub_store/scripts/sub_store.config`（如需局域网访问，将 `sub_store_backend_host="127.0.0.1"` 改为 `0.0.0.0` 后重启）
-  - 数据文件：`/data/adb/sub_store/run/sub-store.json`
-  - 更新：`/data/adb/sub_store/scripts/update_backend.sh`、`update_frontend.sh`
-  - 重启：`/data/adb/sub_store/scripts/start.sh` 或 `sub_store.service restart`
-  - 内置 HTTP-META，可使用测活等需要本地执行的脚本
+- **模块版**：[Delusions6515/Sub-Store-Module](https://github.com/Delusions6515/Sub-Store-Module)，支持 Magisk、KernelSU 与 APatch
 - **App 版**：[sionnx/SubCase](https://github.com/sionnx/SubCase)
-- **Termux 版**：社区维护（见折腾啥频道）
+- **Termux 版**：社区维护：https://t.me/e58695/205
 
 ## Docker 自建
 
-官方镜像：[hub.docker.com/r/xream/sub-store](https://hub.docker.com/r/xream/sub-store)
+官方镜像：[`xream/sub-store`](https://hub.docker.com/r/xream/sub-store)
 
 快速启动示例：
 
@@ -66,15 +78,19 @@ docker run -it -d --restart=always \
 `http://127.0.0.1:3001/<后端前缀>/api/utils/env` 会返回后端版本信息，可用于健康检查与排查。
 :::
 
-所有环境变量的完整说明见 [环境变量](../reference/environment-variables)。
+常见环境变量见 [环境变量](../reference/environment-variables)
+
+所有环境变量的完整说明见 [Docker Hub 页面](https://hub.docker.com/r/xream/sub-store)
 
 ## 使用官方前端
 
-不需要安装任何东西，直接在浏览器打开 <https://sub-store.vercel.app> 即可使用（一般需要能正常访问 Vercel）。自建后端时，在前端「我的」页设置后端地址即可连接。
+不需要安装任何东西，直接在浏览器打开 <https://sub-store.vercel.app> 即可使用（一般需要能正常访问 Vercel）。
+
+自建后端时，在前端「我的」页设置后端地址即可连接。
 
 > 前端为 PWA，未刷新出最新版时请参考 [清除前端 PWA 缓存](./troubleshooting)。
 
 ## 更多参考
 
-- 折腾啥博客：[安装下载](https://zhetengsha.eu.org/blog/215/)、[Android 版说明](https://zhetengsha.eu.org/blog/posts/1008)
+- 折腾啥博客：[安装下载](https://zhetengsha.eu.org/blog/215/)
 - 社区教程：[Lucy 的小白教程](https://wiki.repcz.link/substore/install/)
