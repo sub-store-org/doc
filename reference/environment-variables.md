@@ -39,7 +39,7 @@ SUB_STORE_CORS_ALLOWED_ORIGINS=https://sub-store-frontend.a.com
 
 | 变量 | 说明 | 默认 |
 | --- | --- | --- |
-| `SUB_STORE_CORS_ALLOWED_ORIGINS` | CORS allowlist，多个来源用逗号分隔；使用官方前端时无需设置。**建议设置具体来源**，`*` 意味着任意网站均可通过浏览器 CORS 读取本地后端 | `https://sub-store.vercel.app,http://substore.stash,https://substore.stash` |
+| `SUB_STORE_CORS_ALLOWED_ORIGINS` | CORS allowlist，多个来源用逗号分隔；使用官方前端时无需设置。**建议设置具体来源**，`*` 意味着任意网站均可通过浏览器 CORS 读取本地后端——包括你浏览器访问过的任一恶意页面，可调用后端接口拉取全部订阅定义、节点服务器地址及节点内嵌的用户名/密码等凭据。仅在单机调试的临时场景使用，用后立即改回具体来源 | `https://sub-store.vercel.app,http://substore.stash,https://substore.stash` |
 | `SUB_STORE_MAX_HEADER_SIZE` | undici header 大小限制；订阅响应头过大时报 `Headers Overflow Error` 时可调大 | `32768` |
 | `SUB_STORE_BODY_JSON_LIMIT` | JSON Body 大小限制 | `1mb`（例：`10mb`） |
 | `SUB_STORE_BACKEND_DEFAULT_PROXY` | 设置默认代理，支持 SOCKS5 / HTTP / HTTPS，影响脚本中的请求 | 例：`socks5://a:b@host:7890`、`http://127.0.0.1:7890` |
@@ -62,8 +62,9 @@ SUB_STORE_CORS_ALLOWED_ORIGINS=https://sub-store-frontend.a.com
 
 | 变量 | 说明 |
 | --- | --- |
-| `SUB_STORE_DATA_URL` | 启动时从该地址拉取并恢复数据（建议用 Gist Raw 链接，可加 `#noCache`） |
-| `SUB_STORE_DATA_URL_POST` | 拉取数据后执行的自定义命令，如设置 Token：`content.settings.gistToken='xxxxx'` |
+| `SUB_STORE_DATA_BASE_PATH` | 数据文件读写的基础路径 | `.` |
+| `SUB_STORE_DATA_URL` | 启动时从该地址拉取并恢复数据（建议用 Gist Raw 链接，可加 `#noCache`） | - |
+| `SUB_STORE_DATA_URL_POST` | 拉取数据后执行的自定义命令，如设置 Token：`content.settings.gistToken='xxxxx'`。示例中的 Token 建议仅 `gist` 权限；Token 在 `.env` / 环境变量中为明文，注意不要提交到版本库或暴露到日志 | - |
 
 接口：`/api/utils/backup?action=upload`（备份）、`/api/utils/backup?action=download`（恢复，可加 `keep=settings.gistToken` 保留现有 Token）。
 

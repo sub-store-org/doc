@@ -37,3 +37,7 @@ description: ⚠️ sub.store 只是模块脚本重写 MitM 使用的域名，�
 sub.store = 127.0.0.1
 ```
 :::
+
+::: warning 适用范围
+将 `sub.store` 映射到 `127.0.0.1` **仅适用于代理 App 模块版**（此时重写让 `sub.store` 命中本机后端）。Docker 自建、Android 模块、SubCase 等场景本地并无 `sub.store:443` 服务，照做会阻断前端访问——此类环境请改用规则拒绝对 `sub.store` 的访问，或配置 DNS 兜底到你可控的地址（如任一无响应 IP），而不是映射到本机。
+:::

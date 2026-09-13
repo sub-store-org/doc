@@ -66,26 +66,7 @@ async function operator() {
 
 ## 输出链接参数
 
-生成的订阅链接支持传入常用参数（**参数值需要 encodeURIComponent 编码**）：
-
-| 参数 | 说明 |
-| --- | --- |
-| `target` | 指定输出目标平台，如 `Surge`、`ClashMeta`、`sing-box` |
-| `url` | 远程订阅内容（非 http/https 链接时视为单条本地节点内容） |
-| `content` | 本地订阅内容 |
-| `ua` | 拉取/请求时使用的 User-Agent |
-| `proxy` | 指定获取订阅的代理/节点/策略 |
-| `mergeSources` | 合并本地和远程订阅的顺序：`localFirst` / `remoteFirst` |
-| `ignoreFailedRemoteSub` | 远程订阅失败处理：`disabled`（严格报错）/ `enabled`（跳过并通知）/ `quiet`（跳过静默）/ `fallbackNotify` / `fallbackQuiet` |
-| `prettyYaml` | `true` 时输出块状 YAML（默认单行 JSON 风格） |
-| `includeUnsupportedProxy` | 包含当前客户端不支持的协议 |
-| `noCache` | 不使用缓存（仅限远程链接来源，不影响脚本缓存） |
-| `noFlow` | 不查询订阅流量信息 |
-| `$options` | 给脚本传入参数（JSON 字符串或 `a=1&b=2`） |
-
-::: warning
-布尔开关按「是否传入参数」判断：非空字符串也会被视为启用。不想启用某个参数就不要传它。
-:::
+生成的订阅链接支持通过 URL 参数复用配置：如 `target` 指定输出格式、`url` 传入远程订阅、`content` 传入本地节点、`ua` 指定 User-Agent（**参数值需要 encodeURIComponent 编码**）。完整参数清单见 [链接参数](../reference/link-params)。
 
 ## 小技巧
 

@@ -22,7 +22,7 @@ export default {
     return userData.map((user) => ({
       avatar: user.avatar_url,
       name: user.name ? user.name : user.login,
-      title: "Member",
+      title: "成员",
       links: [{ icon: "github", link: user.html_url }],
     }));
   },

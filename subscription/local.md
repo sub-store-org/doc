@@ -77,5 +77,5 @@ b = ss, example.com, 8388, encrypt-method=aes-128-gcm, password=1234
 
 ## 参考
 
-- 节点内部字段结构：可在预览界面点击节点查看 JSON，或查看 `target=JSON` 的通用订阅输出；也可参考 [demo.js](https://github.com/sub-store-org/Sub-Store/blob/master/scripts/demo.js)
+- 节点内部字段结构：可在预览界面点击节点查看 JSON，或查看 `target=JSON` 的通用订阅输出（Plain JSON）；也可参考 [demo.js](https://github.com/sub-store-org/Sub-Store/blob/master/scripts/demo.js)
 - NaiveProxy / Tailscale 等特殊写法的说明见折腾啥博客：[本地节点/订阅怎么写](https://zhetengsha.eu.org/blog/posts/824)、[WireGuard 格式](https://zhetengsha.eu.org/blog/posts/1144)

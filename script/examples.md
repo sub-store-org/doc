@@ -73,7 +73,7 @@ return /港|hk|hongkong|🇭🇰|日|jp|japan|🇯🇵|美|us|🇺🇸/i.test($s
 https://raw.githubusercontent.com/xream/scripts/main/surge/modules/sub-store-scripts/check/availability.js#show_latency=true&keep_incompatible=true&status=204&url=http%3A%2F%2Fconnectivitycheck.platform.hicloud.com%2Fgenerate_204&timeout=1000&retries=1&retry_delay=1000&concurrency=10
 ```
 
-**Node.js 版（需要 HTTP-META）：**
+**Node.js 版（需要 [HTTP-META](../advanced/http-meta)，Docker 版用带 `http-meta` tag 的镜像，Android 模块版内置）：**
 
 ```
 https://raw.githubusercontent.com/xream/scripts/main/surge/modules/sub-store-scripts/check/http_meta_availability.js#show_latency=true&keep_incompatible=true&status=204&url=http%3A%2F%2Fconnectivitycheck.platform.hicloud.com%2Fgenerate_204&timeout=1000&retries=1&retry_delay=1000&concurrency=10&http_meta_protocol=http&http_meta_host=127.0.0.1&http_meta_port=9876&http_meta_start_delay=3000&http_meta_proxy_timeout=10000
@@ -98,12 +98,6 @@ https://raw.githubusercontent.com/xream/scripts/main/surge/modules/sub-store-scr
 详见 [折腾啥博客](https://zhetengsha.eu.org/blog/posts/948)。
 
 ## 按延迟排序
-
-脚本操作链接：
-
-```
-https://raw.githubusercontent.com/xream/scripts/main/surge/modules/sub-store-scripts/sort/latency.js
-```
 
 参考 [折腾啥博客](https://zhetengsha.eu.org/blog/posts/1966)。
 

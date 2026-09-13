@@ -39,13 +39,24 @@ docker run -d \
 
 ## Android 模块版
 
-- **更新后端**：`/data/adb/sub_store/scripts/update_backend.sh`
-- **更新前端**：`/data/adb/sub_store/scripts/update_frontend.sh`
-- **更新 HTTP-META**：`/data/adb/sub_store/scripts/update_http_meta.sh`
-- **更新 Node.js**：从 [Delusions6515/node-android-build](https://github.com/Delusions6515/node-android-build) 下载新版本，替换 `/data/adb/sub_store/bin/sub_store_node`
-- **手动重启**：`/data/adb/sub_store/scripts/start.sh` 或 `sub_store.service restart`
+::: warning 注意
+这里只介绍 [Delusions6515/Sub-Store-Module](https://github.com/Delusions6515/Sub-Store-Module) 的更新方式
 
-也可在 KernelSU App 内下拉刷新或杀后台重进查看最新状态。
+[xream 的 Sub-Store 模块](https://t.me/zhetengsha/1008) 已停止更新
+:::
+
+可使用管理器 执行(action)按钮 或 KernelSU/APatch WebUI 选择更新
+- Magisk 用户如果希望使用 WebUI，可以尝试 [KsuWebUIStandalone](https://github.com/KOWX712/KsuWebUIStandalone/releases) 或 [WebUI X](https://github.com/MMRLApp/WebUI-X-Portable/releases)
+
+手动操作
+```shell
+su -c "sh /data/adb/modules/sub_store/scripts/sub_store.service start"    # 启动
+su -c "sh /data/adb/modules/sub_store/scripts/sub_store.service stop"     # 停止
+su -c "sh /data/adb/modules/sub_store/scripts/sub_store.service restart"  # 重启
+su -c "sh /data/adb/modules/sub_store/scripts/update_backend.sh"          # 更新后端
+su -c "sh /data/adb/modules/sub_store/scripts/update_frontend.sh"         # 更新前端
+su -c "sh /data/adb/modules/sub_store/scripts/update_http_meta.sh all"    # 更新 http-meta
+```
 
 ## 代理 App 版
 
@@ -55,7 +66,7 @@ docker run -d \
 
 ## 更新前备份
 
-更新前建议先备份数据，见 [我的概览 - 备份与恢复](../my/overview)。也可配置定时备份环境变量 `SUB_STORE_BACKEND_UPLOAD_CRON`，见 [环境变量](../reference/environment-variables)。
+更新前建议先备份数据，见 [我的概览 - 备份与恢复](../my/overview#备份与恢复)。也可配置定时备份环境变量 `SUB_STORE_BACKEND_UPLOAD_CRON`，见 [环境变量 - 数据备份与恢复](../reference/environment-variables#数据备份与恢复)。
 
 ## 版本验证
 

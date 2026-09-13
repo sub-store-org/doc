@@ -25,7 +25,7 @@ description: 支持的输出目标平台、通用链接、target 参数，以及
 - Clash（已弃用，可传 `target=Clash`）
 
 ::: tip
-包含官方/商店版不支持的协议时，需启用 `includeUnsupportedProxy` 参数（Clash 系返回全部节点；sing-box 额外包含 SSR/Snell；Surge 额外保留 HTTP 传输层等）。全部是 WireGuard 节点的订阅可输出为 Surge 模块。
+包含官方/商店版不支持的协议时，需启用 `includeUnsupportedProxy` 参数（Clash 系返回全部节点；sing-box 额外包含 SSR/Snell；Surge 会**去除** HTTP 传输层以转换为 Surge 可识别的协议，连通性取决于服务端是否支持去除后的协议）。全部是 WireGuard 节点的订阅可输出为 Surge 模块。
 :::
 
 ## 生成配置文件

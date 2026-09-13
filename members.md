@@ -3,8 +3,8 @@ import { data } from './data/members.data.js'
 import { VPTeamMembers } from 'vitepress/theme'
 </script>
 
-# Our Team
+# 团队成员
 
-Say hello to our awesome team.
+Sub-Store 项目维护者。
 
 <VPTeamMembers size="small" :members="data" />

@@ -38,7 +38,7 @@ function operator(proxies, targetPlatform, context) {
 
 ## 常见用途
 
-- **节点测试**：测活、测延迟、节点测速、UDP 检测、落地/入口检测等（配合 HTTP-META 可本地执行）
+- **节点测试**：测活、测延迟、节点测速、UDP 检测、落地/入口检测等（配合 [HTTP-META](../advanced/http-meta) 与 [MMDB 本地数据库](../advanced/mmdb) 可本地执行）
 - **节点增强**：按名称提取流量信息、标记地区、改协议参数（如 QX obfs）、去重、排序等
 - **文件生成**：动态生成 mihomo / sing-box / Surfboard 配置
 - **自动化**：定时处理订阅预热缓存、读取文件配置控制脚本行为

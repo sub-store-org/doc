@@ -39,7 +39,6 @@ Sub-Store 生成的订阅地址与文件地址支持通过 URL 参数复用配�
 | `ignoreFailedRemoteSub` | `disabled` | 远程订阅失败处理：`disabled`（严格报错）/ `enabled`（跳过并通知）/ `quiet`（跳过静默）/ `fallbackNotify`（兜底通知）/ `fallbackQuiet`（兜底静默） |
 | `ignoreFailedRemoteFile` | `disabled` | 远程文件失败处理：`disabled` / `enabled` / `quiet` |
 | `prettyYaml` | `true` | 输出块状 YAML，默认是单行 JSON 风格 |
-| `produceType` | `internal` / `raw` | `internal` 获取结构化数据；`raw` 返回原始数据数组 |
 | `noCache` | `true` | 不使用缓存（仅限远程链接来源，不影响脚本缓存） |
 | `noFlow` | `true` | 强制不查询订阅流量信息 |
 | `includeUnsupportedProxy` | `true` | 包含官方/商店版/未续费订阅不支持的协议 |

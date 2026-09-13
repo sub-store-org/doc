@@ -28,8 +28,9 @@ description: 同步配置：把订阅/文件产物定时上传到 Gist，供客�
 ## 注意
 
 ::: danger GitHub Token
-GitHub 会扫描明文 Gist 中的 GitHub Token。相关注意事项见[环境变量 - 数据备份与恢复](../reference/environment-variables)。
+GitHub 会扫描明文 Gist 中的 GitHub Token。相关注意事项见[环境变量 - 数据备份与恢复](../reference/environment-variables#数据备份与恢复)。
 :::
 
 - 同步配置是「私有 Gist」还是公开，取决于你的 Token 与配置，请勿把敏感内容写入公开 Gist
+  - **必须确认 Gist 是私有的**：Gist 链接形如 `https://gist.github.com/<user>/<id>`——打开浏览器确认页面上显示 **Private** 徽章（无徽章 = 公开）。使用仅 `gist` 权限的 Token 后，前端「同步」默认创建私有 Gist；分发时仅将 raw 链接分发给已确认是私有 Gist 的对象。若不确定，可用 GitHub API 检查：`curl -s -H "Authorization: Bearer <token>" https://api.github.com/gists/<id> | jq '.public'`，必须返回 `false`
 - 更多思路见折腾啥博客：[定时处理订阅，避免 App 内拉取超时](https://zhetengsha.eu.org/blog/posts/1449)、[Surfboard 远程托管配置](https://zhetengsha.eu.org/blog/posts/1111)

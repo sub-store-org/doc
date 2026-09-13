@@ -15,6 +15,11 @@ description: 常见问题排查：代理 App 版、自建/Android 版、订阅�
 
 1. 确认模块和脚本都下载成功
 2. 浏览器访问 `https://sub.store/api/utils/env`（注意是 https），应能看到版本号
+
+   ::: warning 注意
+   该请求走的是 `sub.store` 重写域名：若 MitM/重写未生效（往往正是排查原因），请求会发往**公网 sub.store**，存在数据泄露风险。建议先按 [sub.store 域名说明](../reference/sub-store-domain) 将 `sub.store` 映射到 `127.0.0.1` 再做验证。
+   :::
+
 3. 如果报错，尝试访问 `http://sub.store/api/utils/env`（注意是 http）：若成功，说明是 **MitM / 证书信任** 的问题
 4. 还是不行的话，一般是请求没有进重写：检查重写、脚本功能是否开启
 
@@ -38,7 +43,7 @@ description: 常见问题排查：代理 App 版、自建/Android 版、订阅�
    - Chrome：`chrome://settings/content/insecureContent`
    - Edge：`edge://settings/privacy/sitePermissions/allPermissions/insecureContent`
    - 添加允许访问的后端地址
-6. 使用非官方前端时，注意 `SUB_STORE_CORS_ALLOWED_ORIGINS`（2.38.0 起需要设置 CORS allowlist）；脚本操作、脚本过滤、修改响应对应 `SUB_STORE_FRONTEND_BACKEND_PATH`
+6. 使用非官方前端时，注意 `SUB_STORE_CORS_ALLOWED_ORIGINS`（2.38.0 起需要设置 CORS allowlist）；若要使用**脚本操作、脚本过滤或修改响应**，必须设置 `SUB_STORE_FRONTEND_BACKEND_PATH`（不想改路径可设 `SUB_STORE_FRONTEND_BACKEND_PATH=/`），或改用 `SUB_STORE_BACKEND_CUSTOM_NAME`
 
 ## 订阅拉取失败或协议不全
 
@@ -46,7 +51,7 @@ description: 常见问题排查：代理 App 版、自建/Android 版、订阅�
 2. **浏览器能打开、Sub-Store 拉不到**：在订阅设置中把 User-Agent 改成你浏览器的 User-Agent
 3. **代理 App 里能用、浏览器打不开**：机场限制了 User-Agent，可尝试常见客户端的 UA（如 `clash.meta/v1.19.99`、`v2ray` 等）
 4. **浏览器也打不开**：给该订阅分流换节点，或尝试不走代理
-5. **证书报错**（如日志出现 `unable to verify the first certificate`）：在订阅链接结尾加上 `#insecure`
+5. **证书报错**（如日志出现 `unable to verify the first certificate`）：仅在**确认信任该机场**时，可在订阅链接结尾加上 `#insecure` 跳过 TLS 校验；否则中间人可替换订阅内容，风险等同于订阅走明文。优先与机场确认证书链/CDN 配置，而不是关闭校验
 6. **超时**：在订阅编辑页把超时调大（如 10000ms）重试；客户端自身超时无法调整时，可把超时调小并开启组合订阅的「忽略失败的远程订阅」，或配置定时同步到 Gist 后让客户端使用 Gist 链接（同步任务不存在超时问题）
 7. 已知问题：使用 CF 节点访问 CF 订阅链接会报错，跟踪见 [Sub-Store#324](https://github.com/sub-store-org/Sub-Store/issues/324)
 

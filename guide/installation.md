@@ -7,10 +7,8 @@ description: Sub-Store 的多种安装方式对比
 
 Sub-Store 有多种部署方式，大部分由社区维护：
 
-::: info
-高级功能 请参考文档 高级功能 章节
-
-如果你不知道什么是高级功能，那么建议你忽略，~~因为你用不上~~
+::: info 高级功能
+高级功能（HTTP-META / 推送通知 / MMDB 本地数据库）对 **Docker 自建、Android 模块版**以及需要定时推送/本地测活的部署可用；客户端内置版（Clash Party / Sparkle / SubCase）大多无法直接使用，可忽略。详情见 [高级功能](../advanced/http-meta)。
 :::
 
 | 方式 | 说明 | 注意 |
@@ -19,7 +17,7 @@ Sub-Store 有多种部署方式，大部分由社区维护：
 | 代理 App 模块 | Surge / Shadowrocket / Loon / QX 等 | 可以变通使用部分高级功能 |
 | Android 模块 | [Delusions6515/Sub-Store-Module](https://github.com/Delusions6515/Sub-Store-Module) | **需要 root** <br> 可以直接使用高级功能 |
 | Android APP | [sionnx/SubCase](https://github.com/sionnx/SubCase) | 无法直接使用高级功能 |
-| Android Termux | https://t.me/e58695/205 | |
+| Android Termux | 社区维护：[Termux 安装教程](https://t.me/e58695/205) | |
 | Docker 自建 | 官方镜像 [`xream/sub-store`](https://hub.docker.com/r/xream/sub-store) | 若要使用高级功能，请参考 Docker Hub 页面说明 |
 | 官方前端 | <https://sub-store.vercel.app> | 仅前端，需搭配自定义后端使用 |
 <!-- | SubDock | [sub-store-org/SubDock](https://github.com/sub-store-org/SubDock) <br> 全平台 Sub-Store 管理器 | 仍在开发中... | -->

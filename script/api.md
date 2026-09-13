@@ -72,6 +72,7 @@ if ($options) {
 const ProxyUtils = {
   parse,           // 订阅解析
   process,         // 节点操作/文件操作
+  processResponse, // 修改响应处理（对应「修改响应」功能）
   produce,         // 输出订阅
   getRandomPort,   // 随机端口（参考 ports 格式 443,8443,5000-6000）
   ipAddress,       // ip-address 库

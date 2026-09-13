@@ -40,6 +40,7 @@ export default defineConfig({
     nav: [
       { text: '指南', link: '/guide/getting-started' },
       { text: '参考', link: '/reference/environment-variables' },
+      { text: '高级功能', link: '/advanced/http-meta' },
       { text: '成员', link: '/members' }
     ],
 
@@ -66,7 +67,7 @@ export default defineConfig({
       },
       {
         text: '订阅',
-        collapsed: true,
+        collapsed: false,
         items: [
           { text: '订阅概览', link: '/subscription/overview' },
           { text: '本地节点与订阅', link: '/subscription/local' },
@@ -93,18 +94,12 @@ export default defineConfig({
       },
       {
         text: '我的',
-        collapsed: true,
+        collapsed: false,
         items: [
           { text: '我的概览', link: '/my/overview' },
           { text: '日志', link: '/my/logs' },
-          { text: '设置', link: '/my/settings' }
-        ]
-      },
-      {
-        text: '归档',
-        collapsed: true,
-        items: [
-          { text: '归档概览', link: '/archives/overview' }
+          { text: '设置', link: '/my/settings' },
+          { text: '归档', link: '/archives/overview' }
         ]
       },
       {
