@@ -20,7 +20,7 @@ Sub-Store 后端（Node.js / Docker 版）通过环境变量进行配置。支�
 | `SUB_STORE_FRONTEND_PORT` | 前端监听端口 | `3001` |
 | `SUB_STORE_FRONTEND_HOST` | 前端监听地址，可按需开放（如局域网） | - |
 | `SUB_STORE_BACKEND_MERGE` | 为 `true` 时后端同时处理前端资源与 API 请求，合并前后端端口，仅暴露一个端口 | - |
-| `SUB_STORE_FRONTEND_BACKEND_PATH` | 前端访问后端时使用的路径前缀 | `/2cXaAxRGfddmGz2yx1wA` |
+| `SUB_STORE_FRONTEND_BACKEND_PATH` | 前端访问后端时使用的路径前缀 | - |
 | `SUB_STORE_BACKEND_PREFIX` | 后端也加上 `SUB_STORE_FRONTEND_BACKEND_PATH` 设置的后缀，适用于同主机防扫场景 | - |
 | `SUB_STORE_FRONTEND_PATH` | 前端文件夹路径。Docker 版自带默认内部路径，无需设置 | - |
 | `HOST` / `PORT` | HTTP-META 使用的监听配置；默认端口 `9876`，可能与其他服务（如 ddns-go）冲突 | `127.0.0.1:9876` |
@@ -39,7 +39,7 @@ SUB_STORE_CORS_ALLOWED_ORIGINS=https://sub-store-frontend.a.com
 
 | 变量 | 说明 | 默认 |
 | --- | --- | --- |
-| `SUB_STORE_CORS_ALLOWED_ORIGINS` | CORS allowlist，多个来源用逗号分隔；使用官方前端时无需设置。**建议设置具体来源**，`*` 意味着任意网站均可通过浏览器 CORS 读取本地后端——包括你浏览器访问过的任一恶意页面，可调用后端接口拉取全部订阅定义、节点服务器地址及节点内嵌的用户名/密码等凭据。仅在单机调试的临时场景使用，用后立即改回具体来源 | `https://sub-store.vercel.app,http://substore.stash,https://substore.stash` |
+| `SUB_STORE_CORS_ALLOWED_ORIGINS` | CORS allowlist，多个来源用逗号分隔；使用官方前端时无需设置。 <br> **建议设置具体来源**，不建议设为 `*` <br> 设为 `*` 时建议设置随机 `SUB_STORE_FRONTEND_BACKEND_PATH` | `https://sub-store.vercel.app,http://substore.stash,https://substore.stash` |
 | `SUB_STORE_MAX_HEADER_SIZE` | undici header 大小限制；订阅响应头过大时报 `Headers Overflow Error` 时可调大 | `32768` |
 | `SUB_STORE_BODY_JSON_LIMIT` | JSON Body 大小限制 | `1mb`（例：`10mb`） |
 | `SUB_STORE_BACKEND_DEFAULT_PROXY` | 设置默认代理，支持 SOCKS5 / HTTP / HTTPS，影响脚本中的请求 | 例：`socks5://a:b@host:7890`、`http://127.0.0.1:7890` |

@@ -42,7 +42,7 @@ docker run -d \
 ::: warning 注意
 这里只介绍 [Delusions6515/Sub-Store-Module](https://github.com/Delusions6515/Sub-Store-Module) 的更新方式
 
-[xream 的 Sub-Store 模块](https://t.me/zhetengsha/1008) 已停止更新
+[xream 的 Sub-Store Android 模块](https://t.me/zhetengsha/1008) 已停止更新
 :::
 
 可使用管理器 执行(action)按钮 或 KernelSU/APatch WebUI 选择更新

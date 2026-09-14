@@ -75,6 +75,10 @@ b = ss, example.com, 8388, encrypt-method=aes-128-gcm, password=1234
 }
 ```
 
+::: tip WireGuard 前缀长度
+WireGuard 支持 `ip-cidr`（IPv4 前缀长度）与 `ipv6-cidr`（IPv6 前缀长度）字段，未设置时默认分别为 `32` / `128`；输出到 mihomo / Shadowrocket / sing-box / URI 时会把该后缀带上（如 `1.2.3.4/32`）。
+:::
+
 ## 参考
 
 - 节点内部字段结构：可在预览界面点击节点查看 JSON，或查看 `target=JSON` 的通用订阅输出（Plain JSON）；也可参考 [demo.js](https://github.com/sub-store-org/Sub-Store/blob/master/scripts/demo.js)

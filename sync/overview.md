@@ -1,11 +1,11 @@
 ---
 title: 同步概览
-description: 同步配置：把订阅/文件产物定时上传到 Gist，供客户端稳定拉取
+description: 同步配置：把订阅/文件产物定时上传到 Gist / GitLab Snippet，供客户端稳定拉取
 ---
 
 # 同步概览
 
-「同步」功能把**订阅或文件的处理产物**定时上传到 Gist，生成一个稳定的链接供客户端使用。
+「同步」功能把**订阅或文件的处理产物**定时上传到 **Gist（Github）或 GitLab Snippet**，生成一个稳定的链接供客户端使用。
 
 ## 为什么用同步
 
@@ -15,10 +15,15 @@ description: 同步配置：把订阅/文件产物定时上传到 Gist，供客�
 
 ## 使用方法
 
-1. 确保已在「我的 → 设置」中配置 **GitHub Token**（用于写 Gist）
+1. 确保已在「我的」页配置 **GitHub Token** 与用户名（用于写 Gist；详情见 [我的概览 - 设置](../my/settings)）
 2. 新建同步配置：选择要同步的订阅/组合订阅或文件，目标平台可选（如 Surfboard、Surge），按需开启**定时同步**
 3. 同步一次后点击复制，得到 Gist 链接
 4. 把链接导入客户端；客户端无法直连 Gist 时可自行拼接加速服务
+
+## 同步平台
+
+- **Gist（GitHub，默认）**：需要 GitHub Token 与用户名
+- **GitLab Snippet**（β）：在「我的」页的 GitHub 配置区可切换同步平台到 GitLab。切换到 GitLab 后，原先的 Token 字段会被当作 **GitLab Private Token** 使用（`PRIVATE-TOKEN` 请求头），GitHub 用户名仅用于头像等展示；因部分页面文案仍显示 Gist，属已知现象，建议先备份数据再使用
 
 ## 定时同步
 

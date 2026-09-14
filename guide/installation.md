@@ -16,7 +16,7 @@ Sub-Store 有多种部署方式，大部分由社区维护：
 | 软件内置 | Clash Party / Sparkle 等客户端内置了 Sub-Store | 大多无法直接使用高级功能 |
 | 代理 App 模块 | Surge / Shadowrocket / Loon / QX 等 | 可以变通使用部分高级功能 |
 | Android 模块 | [Delusions6515/Sub-Store-Module](https://github.com/Delusions6515/Sub-Store-Module) | **需要 root** <br> 可以直接使用高级功能 |
-| Android APP | [sionnx/SubCase](https://github.com/sionnx/SubCase) | 无法直接使用高级功能 |
+| Android APP | [sub-store-org/subcase](https://github.com/sub-store-org/subcase) | 无法直接使用高级功能 |
 | Android Termux | 社区维护：[Termux 安装教程](https://t.me/e58695/205) | |
 | Docker 自建 | 官方镜像 [`xream/sub-store`](https://hub.docker.com/r/xream/sub-store) | 若要使用高级功能，请参考 Docker Hub 页面说明 |
 | 官方前端 | <https://sub-store.vercel.app> | 仅前端，需搭配自定义后端使用 |
@@ -30,22 +30,27 @@ Clash Party / [xishang0128/Sparkle](https://github.com/xishang0128/sparkle) 等�
 
 ## 代理 App 版
 
-Sub-Store 提供各代理 App 的模块/插件/重写配置，位于后端仓库的 [`config` 目录](https://github.com/sub-store-org/Sub-Store/tree/master/config)：
+Sub-Store 提供各代理 App 的模块/插件/重写配置，位于后端仓库的 [`config` 目录](https://github.com/sub-store-org/Sub-Store/tree/master/config)。各应用安装后，用 **Safari 打开 `https://sub.store`** 确认能正常打开（无错误提示）即配置成功；也可以把前端添加到主屏幕，获得类似 App 的使用体验。
 
-- **Surge / Shadowrocket**：安装 Sub-Store 模块
+- **Surge**：
+  - 默认版（支持在 App 内编辑参数）：[`Surge.sgmodule`](https://raw.githubusercontent.com/sub-store-org/Sub-Store/master/config/Surge.sgmodule)
+  - 最新 Surge iOS TestFlight 版：用 [`Surge-Beta.sgmodule`](https://raw.githubusercontent.com/sub-store-org/Sub-Store/master/config/Surge-Beta.sgmodule)
+  - 经典版（不支持编辑参数）：带 ability 用 [`Surge-ability.sgmodule`](https://raw.githubusercontent.com/sub-store-org/Sub-Store/master/config/Surge-ability.sgmodule)（使用 jsc 引擎时可能爆内存），不带 ability 用 [`Surge-Noability.sgmodule`](https://raw.githubusercontent.com/sub-store-org/Sub-Store/master/config/Surge-Noability.sgmodule)
+- **Shadowrocket**：安装 [Surge-Noability.sgmodule](https://raw.githubusercontent.com/sub-store-org/Sub-Store/master/config/Surge-Noability.sgmodule)
 - **Loon**：
-  - 安装插件
+  - 安装 [Loon.plugin](https://raw.githubusercontent.com/sub-store-org/Sub-Store/master/config/Loon.plugin)
   - Loon 3.5.0(969) 及以上推荐使用新版[资源解析器插件](https://raw.githubusercontent.com/sub-store-org/Sub-Store/master/config/Loon-parser.plugin)
     - 旧版在 `[General]` 中配置 `resource-parser`，详见官方 Wiki 的 [Loon 资源解析器说明](https://github.com/sub-store-org/Sub-Store/wiki/Loon-%E8%B5%84%E6%BA%90%E8%A7%A3%E6%9E%90%E5%99%A8%E8%AF%B4%E6%98%8E)
-- **QX**：添加重写引用
-- **Stash / Egern** 等：使用对应配置
+- **QX**：添加[重写](https://raw.githubusercontent.com/sub-store-org/Sub-Store/master/config/QX.snippet)；定时任务见 [`QX-Task.json`](https://raw.githubusercontent.com/sub-store-org/Sub-Store/master/config/QX-Task.json)
+- **Stash**：安装[覆写](https://raw.githubusercontent.com/sub-store-org/Sub-Store/master/config/Stash.stoverride)
+- **Egern**：安装 [Egern.yaml](https://raw.githubusercontent.com/sub-store-org/Sub-Store/master/config/Egern.yaml)
 
 安装后务必确认：**模块/插件已下载成功、开关已开启**，并信任 MitM 证书。若刷新不出新版前端，见 [清除前端 PWA 缓存](./troubleshooting)。
 
 ## Android 版
 
 - **模块版**：[Delusions6515/Sub-Store-Module](https://github.com/Delusions6515/Sub-Store-Module)，支持 Magisk、KernelSU 与 APatch
-- **App 版**：[sionnx/SubCase](https://github.com/sionnx/SubCase)
+- **App 版**：[sub-store-org/subcase](https://github.com/sub-store-org/subcase)
 - **Termux 版**：社区维护：https://t.me/e58695/205
 
 ## Docker 自建
