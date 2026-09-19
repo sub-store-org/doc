@@ -31,9 +31,10 @@ Sub-Store 生成的订阅地址与文件地址支持通过 URL 参数复用配�
 | 参数 | 示例 | 说明 |
 | --- | --- | --- |
 | `target` | `Surge` | 目标平台。为 `SurgeMac` 时启用 mihomo 支援 Surge 本身不支持的协议。也支持多一级路由 `/download/xxx/ClashMeta`，此时忽略 `target` |
+| `platform` | `ClashMeta` | 与 `target` 同义，但优先级更高：目标平台取值顺序为 `platform` → `target` → 请求 User-Agent → `JSON` |
 | `url` | `http://a.com` | 远程订阅内容。非 http/https 链接时视为单条本地节点内容 |
 | `content` | `a = socks5, 127.0.0.1, 1080` | 本地订阅内容 |
-| `ua` | `Surge iOS/3004` | 请求时使用的 User-Agent |
+| `ua` | `Surge iOS/3004` | 请求时使用的 User-Agent。若该订阅开启了「透传 User-Agent」（见 [订阅概览](../subscription/overview#单条订阅)），则改用请求方 UA |
 | `proxy` | `http://127.0.0.1:6152` | 指定获取订阅的代理/节点/策略 |
 | `mergeSources` | `localFirst` / `remoteFirst` | 按顺序合并本地和远程订阅 |
 | `ignoreFailedRemoteSub` | `disabled` | 远程订阅失败处理：`disabled`（严格报错）/ `enabled`（跳过并通知）/ `quiet`（跳过静默）/ `fallbackNotify`（兜底通知）/ `fallbackQuiet`（兜底静默） |
@@ -42,10 +43,10 @@ Sub-Store 生成的订阅地址与文件地址支持通过 URL 参数复用配�
 | `noCache` | `true` | 不使用缓存（仅限远程链接来源，不影响脚本缓存） |
 | `noFlow` | `true` | 强制不查询订阅流量信息 |
 | `includeUnsupportedProxy` | `true` | 包含官方/商店版/未续费订阅不支持的协议 |
-| `mihomoMerge` | `true` | 为开启仅一个 mihomo 进程 + 多个 listeners 的模式，节点会转成 SOCKS5 |
-| `mihomoMergeName` | `mihomo merged` | 设置上面 mihomo 节点的名字 |
-| `mihomoLocalPort` | `65535` | 初始端口号，逐个递减 |
-| `mihomoExternal` | `true` | 强制指定使用 mihomo External Proxy Program 输出节点 |
+| `mihomoMerge` | `true` | **仅 `target=SurgeMac` 时生效**。为开启仅一个 mihomo 进程 + 多个 listeners 的模式，节点会转成 SOCKS5 |
+| `mihomoMergeName` | `mihomo merged` | **仅 `target=SurgeMac` 时生效**。设置上面 mihomo 节点的名字 |
+| `mihomoLocalPort` | `65535` | **仅 `target=SurgeMac` 时生效**（取值 1–65535）。初始端口号，逐个递减 |
+| `mihomoExternal` | `true` | **仅 `target=SurgeMac` 时生效**。强制指定使用 mihomo External Proxy Program 输出节点 |
 | `fakeSub` / `fakeFile` | `true` | 不使用 `name` 查询单条订阅/文件，便于接入其他系统。`fakeSub` 需配合 `url` 或 `content`；`fakeFile` 需配合 `url`/`content` 或 `type=mihomoConfig` + `sourceType`/`sourceName` |
 | `subInfoUrl` / `subInfoUserAgent` / `download` | — | 文件可用：指定获取流量的链接 / UA / 启用下载（文件名为显示名称） |
 | `$options` | `a=1&b=2` 或 JSON | 传入脚本参数，详见 [脚本使用](../script/usage) |

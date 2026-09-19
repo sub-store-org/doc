@@ -18,6 +18,7 @@ description: 常用设置项：GitHub Token 与同步、缓存默认时长、备
 - **GitHub API 请求超时**：GitHub API 请求超时，单位毫秒（默认 `10000`）
 - **同步上传分批大小**：同步上传分批大小（默认 `10`）
 - **同步平台**：默认为 Gist（GitHub），可切换为 **GitLab Snippet**（β）——切换后 Token 字段按 GitLab Private Token 使用，见 [同步概览 - 同步平台](../sync/overview)
+- **Gist 恢复时的 Token 处理**：恢复备份数据时如何处理备份中的 `gistToken` 字段（每次询问 / 覆盖 / 保留），对应 `/api/utils/backup?action=download` 的 URL 参数 `tokenStrategy` / `keep`
 
 ## 默认请求值
 
@@ -28,6 +29,7 @@ description: 常用设置项：GitHub Token 与同步、缓存默认时长、备
 - **默认代理/策略**：拉取订阅时使用的默认代理
 - **默认超时**：请求超时，单位毫秒（默认 `8000`）
 - **后端请求并发数**：后端发起请求的并发上限，以及并发等待时间（请求密集、出现超时/排队时可调小或调大）
+- **日志保留条数**：后端日志最多保留多少条（默认不限）
 
 ## 缓存默认时长
 
@@ -40,7 +42,7 @@ description: 常用设置项：GitHub Token 与同步、缓存默认时长、备
 
 ## 备份
 
-- **备份编码**：明文 / Base64（涉及 Token 备份行为，见 [我的概览](./overview)）
+- **备份编码**：Base64（默认）/ 明文 / age 加密（age 模式需配置下方 Gist age 加密私钥；涉及 Token 备份行为，见 [我的概览](./overview)）
 
 ## 环境名称与图标
 

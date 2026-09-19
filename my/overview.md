@@ -17,6 +17,17 @@ description: 「我的」页：后端连接、版本信息、Gist 同步、备�
 
 - 备份接口：`/api/utils/backup?action=upload`（备份）、`/api/utils/backup?action=download&keep=settings.gistToken`（恢复并保留现有 Token）
 
+## 不使用 Gist 的备份与恢复
+
+「我的」页还提供直接备份/恢复全部数据，无需 GitHub Token：
+
+- **备份**：下载 `sub-store_data_<时间>.json` 文件（全量数据，含订阅、文件、设置）
+- **恢复**：上传之前备份的数据文件（或该文件的 Base64）覆盖当前数据
+
+::: warning 恢复不可逆
+恢复会用上传数据覆盖当前全部数据，请先备份现有数据留底。设置页的「备份编码 / 恢复 Token 处理」见 [设置](./settings)。
+:::
+
 ## 常见入口
 
 - 版本信息接口：`<后端地址>/api/utils/env`，返回 `{ "status": "success", "data": { "backend": "Node", "version": "..." } }`

@@ -21,7 +21,7 @@ hero:
       link: https://github.com/sub-store-org/Sub-Store-Front-End
     - theme: alt
       text: 后端源码地址
-      link: https://github.com/sub-store-org/Sub-Store/releases
+      link: https://github.com/sub-store-org/Sub-Store
 
 features:
   - title: 节点订阅转换

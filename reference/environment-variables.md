@@ -16,9 +16,9 @@ Sub-Store 后端（Node.js / Docker 版）通过环境变量进行配置。支�
 | 变量 | 说明 | 默认 |
 | --- | --- | --- |
 | `SUB_STORE_BACKEND_API_PORT` | 后端 API 监听端口 | `3000` |
-| `SUB_STORE_BACKEND_API_HOST` | 后端 API 监听地址。**不应该对外暴露**，这是内部裸后端 | `127.0.0.1` |
+| `SUB_STORE_BACKEND_API_HOST` | 后端 API 监听地址。**不应该对外暴露**，这是内部裸后端 | `::`（全部接口） |
 | `SUB_STORE_FRONTEND_PORT` | 前端监听端口 | `3001` |
-| `SUB_STORE_FRONTEND_HOST` | 前端监听地址，可按需开放（如局域网） | - |
+| `SUB_STORE_FRONTEND_HOST` | 前端监听地址，可按需开放（如局域网）；未设置时沿用后端 host | 默认 `::`（全部接口） |
 | `SUB_STORE_BACKEND_MERGE` | 为 `true` 时后端同时处理前端资源与 API 请求，合并前后端端口，仅暴露一个端口 | - |
 | `SUB_STORE_FRONTEND_BACKEND_PATH` | 前端访问后端时使用的路径前缀 | - |
 | `SUB_STORE_BACKEND_PREFIX` | 后端也加上 `SUB_STORE_FRONTEND_BACKEND_PATH` 设置的后缀，适用于同主机防扫场景 | - |
@@ -34,6 +34,10 @@ SUB_STORE_CORS_ALLOWED_ORIGINS=https://sub-store-frontend.a.com
 ```
 
 此时仅暴露前端端口（如 3001），后端通过 `http://127.0.0.1:3001/<前缀>` 访问。
+
+::: warning 默认监听全部接口
+Node 版未设置 `SUB_STORE_BACKEND_API_HOST` / `SUB_STORE_FRONTEND_HOST` 时默认监听 `::`（全部接口）。公网部署请显式设置 `SUB_STORE_BACKEND_API_HOST=127.0.0.1`，并只对外暴露前端端口（Docker 中仅发布 3001）。
+:::
 
 ## CORS 与安全
 

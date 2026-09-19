@@ -69,7 +69,7 @@ docker run -it -d --restart=always \
  xream/sub-store
 ```
 
-- 前端默认监听 `3001` 端口，后端 API 默认 `3000` 端口（尽量只监听本机）
+- 前端默认监听 `3001` 端口，后端 API 默认 `3000` 端口。**监听地址默认为全部接口（`::`）**：Docker 中只发布需要暴露的前端端口（如上文 `-p 127.0.0.1:3001:3001`），不要暴露后端 3000 端口，见 [环境变量 - 端口与监听](../reference/environment-variables#端口与监听)
 - 开启 `SUB_STORE_BACKEND_MERGE=true` 可合并前后端端口，仅暴露一个端口
 - 数据目录挂载到 `/opt/app/data`，升级容器不会丢数据
 - 如需使用测活等脚本，可选用带 `http-meta` tag 的镜像
