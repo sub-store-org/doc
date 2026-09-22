@@ -14,16 +14,7 @@ description: 本地节点/订阅怎么写：单行协议语法、URI、JSON5/YAM
 
 ## 支持输入的格式
 
-后端支持的输入格式（详见[后端仓库 README](https://github.com/sub-store-org/Sub-Store)）：
-
-- **协议 URI**：`socks5`、`socks5+tls`、`http`、`https`、SS、SSR、VMess、VLESS、Trojan、Hysteria、Hysteria 2、TUIC v5、WireGuard、AnyTLS 等
-  - 注意：HTTP(s) 没有标准 URI 格式，请使用其他格式书写
-- **Clash Proxies YAML**
-- **Clash Proxy JSON / JSON5 / YAML（单行）**
-- **QX 格式**（SS、SSR、VMess、Trojan、HTTP、SOCKS5、VLESS、AnyTLS）
-- **Loon 格式**（SS、SSR、VMess、Trojan、HTTP、SOCKS5、SOCKS5-TLS、WireGuard、VLESS、Hysteria 2、AnyTLS）
-- **Surge 格式**（Direct、SS、VMess、Trojan、HTTP、HTTPS、SOCKS5、TUIC、Snell、Hysteria 2、WireGuard 等）
-- **mihomo(Clash.Meta) 兼容格式**（Direct、SS、SSR、VMess、Trojan、VLESS、WireGuard、Hysteria、Hysteria 2、TUIC、Snell、SSH、Tailscale、AnyTLS 等）
+本地内容支持混写不同来源的格式：协议 URI、Clash Proxies YAML、Clash 单行 JSON / JSON5 / YAML，以及 QX / Loon / Surge / mihomo(Clash.Meta) 原生格式。各平台支持的协议完整清单见[支持的格式](../reference/formats)。
 
 ::: warning
 不要用 Shadowrocket / NekoBox 导出 URI 再作为输入导入——这样导出的 URI 可能不是标准 URI（已兼容部分常见的非标准 URI，如 VMess、VLESS）。

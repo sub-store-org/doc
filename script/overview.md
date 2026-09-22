@@ -58,5 +58,5 @@ function operator(proxies, targetPlatform, context) {
 
 ## 注意
 
-- 使用脚本但不开缓存时，每次请求都可能耗时过长导致超时，应对方法见 [故障排查](../guide/troubleshooting) 与 [订阅概览](../subscription/overview)
+- 使用脚本但不开缓存时，每次请求都可能耗时过长导致超时，应对方法见 [故障排查 - 脚本请求超时](../guide/troubleshooting#脚本请求超时) 与 [订阅概览 - 定时处理订阅](../subscription/overview#定时处理订阅-避免-app-内拉取超时)
 - 脚本 API 完整参考见 [脚本 API](./api)，运行方式见 [脚本使用](./usage)

@@ -31,19 +31,9 @@ description: 文件功能：托管文本与配置文件，动态生成 mihomo / 
 
 ## 输出链接与运行时覆盖
 
-文件保存后获得输出链接 `/api/file/<name>`。请求文件链接时，可**临时覆盖**来源配置（只影响本次请求，不修改已保存的文件）：
+文件保存后获得输出链接 `/api/file/<name>`。请求文件链接时，可**临时覆盖**来源配置（只影响本次请求，不修改已保存的文件）：`type`（`file` / `mihomoConfig`）、`source`（普通文件来源）、`sourceType`（mihomo 配置来源）、`sourceName`、`mode` 等。
 
-| 参数 | 说明 |
-| --- | --- |
-| `type` | `file` / `mihomoConfig`（覆盖文件类型） |
-| `source` | 普通文件来源：`local` / `remote` |
-| `sourceType` | mihomo 配置来源：`local` / `remote` / `none` / `subscription` / `collection` |
-| `sourceName` | `sourceType` 为订阅/组合订阅时指定名称 |
-| `mode` | `config`（整个内容作为完整配置）/ `proxy`（内容转为节点后写入 proxies） |
-
-示例：`/api/file/demo?type=mihomoConfig&sourceType=remote&mode=config&url=<encodeURIComponent 编码的链接>`
-
-其他通用参数（`target`、`content`、`ua`、`noCache` 等）同样适用于文件链接。
+支持的覆盖参数与示例见 [链接参数 - 文件链接运行时覆盖](../reference/link-params#文件链接运行时覆盖)；其他通用参数（`target`、`content`、`ua`、`noCache` 等）同样适用于文件链接。
 
 ## 常见用法
 

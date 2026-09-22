@@ -16,7 +16,7 @@ description: 脚本怎么用：填写位置、参数传递、分支控制、缓�
 | 来源 | 说明 |
 | --- | --- |
 | `$arguments` | 脚本参数（编辑页配置的参数字段） |
-| `$options` | 通过**输出链接**传入的参数（`?$options=...`），含 `_req`（本次请求信息：method/url/path/query/params/headers/body，可用于按 UA 分支）与 `_res`（可设置响应头和状态码） |
+| `$options` | 通过**输出链接**传入的参数（`?$options=...`），含 `_req`（本次请求信息：method/url/path/query/params/headers/body/socket 等，可用于按 UA 分支）与 `_res`（可设置响应头和状态码） |
 | 链接参数 | `url`、`content`、`target`、`ua`、`proxy` 等通用参数同样生效 |
 
 ::: warning
@@ -82,11 +82,15 @@ const { body, statusCode } = await $.http.post({
 })
 ```
 
+### 输出日志
+
+脚本中的 `console.log` 会进入后端日志；用 `[SCOPE]` 前缀（如 `console.log('[SCOPE] INFO: ...')`）便于在前端日志查看器中区分识别，见 [日志](../my/logs)。
+
 ## 超时应对
 
 使用脚本的请求可能较慢，导致客户端拉取超时：
 
-1. 在脚本中开启缓存（参数一般为 `cache=true`），并配合[定时处理订阅](../subscription/overview)预热缓存
+1. 在脚本中开启缓存（参数一般为 `cache=true`），并配合[定时处理订阅](../subscription/overview#定时处理订阅-避免-app-内拉取超时)预热缓存
 2. 或配置 Gist 定时上传，让客户端拉取 Gist 链接
 3. 或创建同步配置定时触发处理（不上传产物）
 

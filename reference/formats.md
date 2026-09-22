@@ -15,25 +15,23 @@ Sub-Store 支持以下输入格式（详见[后端仓库 README](https://github.
 
 ### 协议 URI
 
-| URI Scheme | 支持的协议 |
+| URI Scheme | 说明 |
 | --- | --- |
-| `socks5`、`socks5+tls`、`http`、`https` | 代理 URI |
+| `socks5` / `socks5+tls` | SOCKS5（+TLS） |
+| `socks` | SOCKS5（用户信息为 Base64） |
+| `http` / `https` | HTTP(S) 代理 |
+| `ss` | Shadowsocks |
+| `ssr` | ShadowsocksR |
+| `vmess` | V2Ray VMess |
+| `vless` | V2Ray VLESS |
+| `trojan` | Trojan |
+| `hysteria` | Hysteria |
+| `hysteria2` | Hysteria 2 |
+| `tuic` | TUIC v5 |
+| `wireguard` / `wg` | WireGuard |
+| `anytls` | AnyTLS |
 
-| URI 协议 | 说明 |
-| --- | --- |
-| AnyTLS | AnyTLS |
-| SOCKS | SOCKS5 |
-| SS | Shadowsocks |
-| SSR | ShadowsocksR |
-| VMess | V2Ray VMess |
-| VLESS | V2Ray VLESS |
-| Trojan | Trojan |
-| Hysteria | Hysteria |
-| Hysteria 2 | Hysteria 2 |
-| TUIC v5 | TUIC |
-| WireGuard | WireGuard |
-
-> HTTP(s) 没有标准 URI 格式，不支持用 URI 输入，请使用其他格式。
+> HTTP / HTTPS 代理没有通行的标准 URI 格式，Sub-Store 按 `http(s)://[用户名:密码@]主机:端口` 解析，未写端口时 http 默认 `80`、https 默认 `443`。
 
 ### 各代理 App 原生格式
 
@@ -42,7 +40,7 @@ Sub-Store 支持以下输入格式（详见[后端仓库 README](https://github.
 | **QX** | SS、SSR、VMess、Trojan、HTTP、SOCKS5、VLESS、AnyTLS |
 | **Loon** | SS、SSR、VMess、Trojan、HTTP、SOCKS5、SOCKS5-TLS、WireGuard、VLESS、Hysteria 2、AnyTLS |
 | **Surge** | Direct、SS、VMess、Trojan、HTTP、HTTPS、HTTP/2 CONNECT、SOCKS5、SOCKS5-TLS、AnyTLS、TrustTunnel、TUIC、Snell、Hysteria 2、MASQUE、SSH（仅密码认证）、External Proxy Program（仅 macOS）、WireGuard（Surge 互转） |
-| **mihomo（Clash.Meta）** | Direct、SS、SSR、VMess、Trojan、HTTP、SOCKS5、Snell、VLESS、WireGuard、Hysteria、Hysteria 2、TUIC、SSH、mieru、sudoku、AnyTLS、MASQUE、Tailscale、GOST Relay、Shadow QUIC、ZeroTier、OpenVPN |
+| **mihomo（Clash.Meta）** | Direct、SS、SSR、VMess、Trojan、HTTP、SOCKS5、Snell、VLESS、WireGuard、Hysteria、Hysteria 2、TUIC、SSH、Naive、Juicity、Mieru、Sudoku、AnyTLS、TrustTunnel、HTTP/2 CONNECT、MASQUE、Tailscale、GOST Relay、Shadow QUIC、ZeroTier、OpenVPN、EasyTier |
 
 ### Clash 格式
 
@@ -55,24 +53,12 @@ Sub-Store 支持以下输入格式（详见[后端仓库 README](https://github.
 
 ## 输出目标
 
-| 目标平台 | 说明 |
-| --- | --- |
-| **Plain JSON** | 结构化节点数据，便于调试和脚本使用 |
-| **Stash** | — |
-| **mihomo（Clash.Meta）** | — |
-| **Surfboard** | — |
-| **Surge** | — |
-| **SurgeMac** | 使用 mihomo 支援 Surge 本身不支持的协议（如 VLESS/SSR） |
-| **Loon** | — |
-| **Egern** | — |
-| **Shadowrocket** | — |
-| **QX** | — |
-| **sing-box** | — |
-| **V2Ray** | — |
-| **V2Ray URI** | — |
+- **Plain JSON**：结构化节点数据，便于调试和脚本使用
+- **SurgeMac**：使用 mihomo 支援 Surge 本身不支持的协议（如 VLESS/SSR）
+- **Stash**、**mihomo（Clash.Meta）**、**Surge**、**Surfboard**、**Loon**、**Egern**、**Shadowrocket**、**QX**、**sing-box**、**V2Ray**、**V2Ray URI**
 
 ::: info 已弃用
-**Clash**（旧版）已弃用，仍可通过 `target=Clash` 输出。
+**Clash**（旧版）已弃用：前端不再显示，仍可通过 `target=Clash` 输出。
 :::
 
 ## 参考

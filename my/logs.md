@@ -17,6 +17,17 @@ description: 查看后端日志，排查问题时的第一手资料
 - 订阅拉取错误：证书问题（`unable to verify the first certificate`）、超时（`timeout`）等
 - 请求是否真的到达后端（配合 [故障排查](../guide/troubleshooting) 使用）
 
+## 脚本日志标记
+
+脚本中的 `console.log` 会进入后端日志。输出日志时可用 `[SCOPE]` 前缀标记，便于在前端日志查看器中区分识别：
+
+```javascript
+console.log(`[SCOPE] LOG: 信息`)
+console.log(`[SCOPE] INFO: 信息`)
+console.log(`[SCOPE] WARN: 警告`)
+console.log(`[SCOPE] ERROR: 错误`)
+```
+
 ## 反馈问题
 
 向开发者反馈问题时，请附上**后端日志**（隐藏 Token 等信息）与复现步骤，见 [故障排查 - 合理的反馈方式](../guide/troubleshooting)。

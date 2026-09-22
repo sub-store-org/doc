@@ -17,6 +17,8 @@ Sub-Store 后端（Node.js / Docker 版）可加载本地的 MaxMind GeoLite2 �
 | `SUB_STORE_MMDB_COUNTRY_URL` | Country 数据库下载地址（使用定时更新时需要） |
 | `SUB_STORE_MMDB_ASN_URL` | ASN 数据库下载地址（使用定时更新时需要） |
 
+变量说明与最新状态以 [环境变量](../reference/environment-variables) 为准。
+
 ## Docker 配置示例
 
 ```bash
