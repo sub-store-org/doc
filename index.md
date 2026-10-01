@@ -7,7 +7,7 @@ hero:
   text: "高级订阅管理工具"
   tagline: 在一个地方管理、处理、转换和托管你的订阅与配置
   image:
-    src: /favicon.svg
+    src: /Sub-Store.png
     alt: Sub-Store Logo
   actions:
     - theme: brand
